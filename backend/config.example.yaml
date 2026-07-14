@@ -1,0 +1,33 @@
+# ExpSupInterviewer 配置模板
+# 复制为 config.yaml 并填入真实值；config.yaml 不入库（见 .gitignore）。
+#
+# 最小配置：只需填写 llm.api_key 和 llm.model 即可启动。
+# 嵌入模型默认复用 LLM 的 api_key 和 base_url，可单独指定 embedding.model。
+
+server:
+  host: 127.0.0.1
+  port: 9400
+
+llm:
+  api_key: sk-your-api-key-here
+  base_url: ""                    # 留空则使用 OpenAI 官方；DeepSeek: https://api.deepseek.com/v1
+  model: gpt-4o-mini              # 推荐: gpt-4o-mini / deepseek-v4-flash / qwen-plus
+  request_timeout: 60
+  connect_timeout: 10
+  disable_thinking: true          # DeepSeek 模型需设为 true
+
+embedding:
+  model: text-embedding-3-small   # OpenAI: text-embedding-3-small / DeepSeek: deepseek-embedding / 通义: text-embedding-v3
+  cache_enabled: true
+
+database:
+  url: sqlite+aiosqlite:///./backend/interview.db
+
+cors:
+  origins:
+    - http://localhost:5173
+    - http://127.0.0.1:5173
+
+pdf:
+  font_regular: "C:/Windows/Fonts/msyh.ttc"
+  font_bold: "C:/Windows/Fonts/msyhbd.ttc"

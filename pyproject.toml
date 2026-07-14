@@ -1,0 +1,30 @@
+[project]
+name = "expsup-interviewer-backend"
+version = "0.1.0"
+description = "FastAPI backend for ExpSupInterviewer Phase 3 (PydanticAI + Behavior Tree)"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.34.0",
+    "python-multipart>=0.0.20",
+    "pydantic-settings>=2.0",
+    "sqlmodel>=0.0.22",
+    "aiosqlite>=0.20.0",
+    "openai>=1.60.0",
+    "langgraph>=0.3.0",
+    "pydantic-ai>=0.0.20",
+    "pdfplumber>=0.11.0",
+    "pypdf>=4.0.0",
+    "python-docx>=1.1.0",
+    "reportlab>=4.0.0",
+    "matplotlib>=3.8.0",
+    "python-dotenv>=1.0.0",
+    "numpy>=1.26.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "mypy>=1.13.0",
+    "ruff>=0.9.0",
+]

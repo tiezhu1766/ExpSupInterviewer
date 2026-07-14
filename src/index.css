@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=DM+Sans:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root,
+html[data-theme="dark"] {
+  --c-bg: #121216;
+  --c-surface: #1a1a20;
+  --c-elevated: #232329;
+  --c-input: #18181c;
+  --c-border: #2e2e36;
+  --c-border-subtle: rgba(46, 46, 54, 0.7);
+
+  --c-text-primary: #fafafa;
+  --c-text-secondary: #b4b4bb;
+  --c-text-tertiary: #7a7a85;
+  --c-text-on-accent: #18181b;
+
+  --c-chat-bot-bg: #1f1f25;
+  --c-chat-bot-border: #2e2e36;
+  --c-chat-bot-text: #e4e4e7;
+
+  --c-success-bg: rgba(16, 185, 129, 0.1);
+  --c-success-text: #10b981;
+  --c-warning-bg: rgba(245, 158, 11, 0.1);
+  --c-warning-text: #f59e0b;
+  --c-danger-bg: rgba(239, 68, 68, 0.1);
+  --c-danger-text: #ef4444;
+
+  --bg-glow-1: rgba(212, 168, 83, 0.12);
+  --bg-glow-2: rgba(140, 133, 126, 0.07);
+  --noise-opacity: 0.022;
+
+  --gradient-title-from: #fafafa;
+  --gradient-title-to: #a1a1aa;
+}
+
+html[data-theme="light"] {
+  --c-bg: #fafaf9;
+  --c-surface: #ffffff;
+  --c-elevated: #f4f4f5;
+  --c-input: #ffffff;
+  --c-border: #e4e4e7;
+  --c-border-subtle: rgba(228, 228, 231, 0.85);
+
+  --c-text-primary: #18181b;
+  --c-text-secondary: #52525b;
+  --c-text-tertiary: #a1a1aa;
+  --c-text-on-accent: #18181b;
+
+  --c-chat-bot-bg: #f4f4f5;
+  --c-chat-bot-border: #e4e4e7;
+  --c-chat-bot-text: #27272a;
+
+  --c-success-bg: rgba(16, 185, 129, 0.08);
+  --c-success-text: #059669;
+  --c-warning-bg: rgba(245, 158, 11, 0.08);
+  --c-warning-text: #d97706;
+  --c-danger-bg: rgba(239, 68, 68, 0.08);
+  --c-danger-text: #dc2626;
+
+  --bg-glow-1: rgba(212, 168, 83, 0.08);
+  --bg-glow-2: rgba(120, 113, 108, 0.03);
+  --noise-opacity: 0.012;
+
+  --gradient-title-from: #18181b;
+  --gradient-title-to: #52525b;
+}
+
+@theme {
+  --font-heading: 'Bricolage Grotesque', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-body: 'DM Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-elevated: var(--c-elevated);
+  --color-input: var(--c-input);
+  --color-border: var(--c-border);
+  --color-border-subtle: var(--c-border-subtle);
+
+  --color-text-primary: var(--c-text-primary);
+  --color-text-secondary: var(--c-text-secondary);
+  --color-text-tertiary: var(--c-text-tertiary);
+  --color-text-on-accent: var(--c-text-on-accent);
+
+  --color-accent: #d4a853;
+  --color-accent-hover: #c49a48;
+  --color-accent-subtle: rgba(212, 168, 83, 0.12);
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+}
+
+html {
+  font-family: var(--font-body);
+  background-color: var(--c-bg);
+  color: var(--c-text-primary);
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--c-bg);
+  color: var(--c-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, var(--bg-glow-1), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 60%, var(--bg-glow-2), transparent);
+  background-attachment: fixed;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--noise-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background-color: rgba(212, 168, 83, 0.35);
+  color: var(--c-text-primary);
+}
+
+@utility animate-fadeIn {
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility text-gradient {
+  background: linear-gradient(135deg, var(--gradient-title-from) 0%, var(--gradient-title-to) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@utility text-gradient-accent {
+  background: linear-gradient(135deg, #f5d78e 0%, #d4a853 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
