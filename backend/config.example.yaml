@@ -16,10 +16,6 @@ llm:
   connect_timeout: 10
   disable_thinking: true          # DeepSeek 模型需设为 true
 
-embedding:
-  model: text-embedding-3-small   # OpenAI: text-embedding-3-small / DeepSeek: deepseek-embedding / 通义: text-embedding-v3
-  cache_enabled: true
-
 database:
   url: sqlite+aiosqlite:///./backend/interview.db
 
